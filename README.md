@@ -14,7 +14,7 @@ Runs on http://localhost:3000
 ```bash
 cd back-end
 npm install
-node server.js
+node index.js
 ```
 
 **3. Front end**
