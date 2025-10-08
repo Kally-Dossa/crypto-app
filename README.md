@@ -1,15 +1,29 @@
 # Crypto App (React + Express)
 A full-stack application that provides information about cryptocurrency prices. The application will contain 2 basic pages, the list of all the coins and the detailed coin page.
 
-## Get Started
+## Getting Started
 
-**1. Clone the repository**
+### Environment Variables
+
+#### Backend (`backend/.env`)
+
+```ini
+COINGECKO_API_URL=mysql_conn_url
+PORT=api_port
+COINGECKO_API_KEY=your_api_key
+```
+
+- `COINGECKO_API_URL` – Root URL for Demo Plan API
+- `PORT` – Port exposed by the Express API.
+- `COINGECKO_API_KEY` – The API key you get from CoinGecko.
+
+**Clone the repository**
 ```bash
 git clone https://github.com/Kally-Dossa/crypto-app.git
 cd crypto-app
 ```
 
-**2. Back end**
+**Backend**
 Runs on http://localhost:3000
 ```bash
 cd back-end
@@ -17,7 +31,7 @@ npm install
 node index.js
 ```
 
-**3. Front end**
+**Frontend**
 Runs on http://localhost:5173
 
 Open a new terminal:
