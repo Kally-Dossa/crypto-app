@@ -16,7 +16,7 @@ COINGECKO_API_KEY=your_api_key
 - `COINGECKO_API_URL` – Root URL for Demo Plan API
 - `PORT` – Port exposed by the Express API.
 - `COINGECKO_API_KEY` – The API key you get from CoinGecko.
-- 
+  
 #### Frontend (`front-end/.env`)
 
 ```ini
