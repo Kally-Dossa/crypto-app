@@ -1,16 +1,20 @@
+require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
-const app = express();
-const port = 3000;
 
-const COINGECKO_API_URL = "https://api.coingecko.com/api/v3";
+const app = express();
+const port = process.env.PORT || 3000;
+
+const COINGECKO_API_URL = process.env.COINGECKO_API_URL;
+const COINGECKO_API_KEY = process.env.COINGECKO_API_KEY;
 
 app.use(cors());
 
 app.get("/coins/markets", async (req, res) => {
   try {
     const { page = 1, per_page = 10 } = req.query;
+
     const response = await axios.get(`${COINGECKO_API_URL}/coins/markets`, {
       params: {
         vs_currency: "usd",
@@ -18,6 +22,7 @@ app.get("/coins/markets", async (req, res) => {
         per_page,
         page,
         price_change_percentage: "24h",
+        x_cg_demo_api_key: COINGECKO_API_KEY,
       },
     });
 
@@ -33,7 +38,7 @@ app.get("/coins/markets", async (req, res) => {
 
     res.json(data);
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching market data:", error.message);
     res.status(500).json({ error: "Something went wrong" });
   }
 });
@@ -49,8 +54,11 @@ app.get("/coins/:id", async (req, res) => {
         community_data: false,
         developer_data: false,
         sparkline: false,
+        x_cg_demo_api_key: COINGECKO_API_KEY,
       },
     });
+
+    const coin = response.data;
 
     const coinData = {
       id: coin.id,
@@ -58,17 +66,17 @@ app.get("/coins/:id", async (req, res) => {
       symbol: coin.symbol,
       image: coin.image?.large,
       description: coin.description?.en || "No description available.",
-      current_price: coin.market_data?.current_price?.eur ?? null,
-      high_24h: coin.market_data?.high_24h?.eur ?? null,
-      low_24h: coin.market_data?.low_24h?.eur ?? null,
+      current_price: coin.market_data?.current_price?.usd ?? null,
+      high_24h: coin.market_data?.high_24h?.usd ?? null,
+      low_24h: coin.market_data?.low_24h?.usd ?? null,
       price_changes: {
-        "24h": coin.market_data?.price_change_percentage_24h ?? 0,
-        "7d": coin.market_data?.price_change_percentage_7d ?? 0,
-        "14d": coin.market_data?.price_change_percentage_14d ?? 0,
-        "30d": coin.market_data?.price_change_percentage_30d ?? 0,
-        "60d": coin.market_data?.price_change_percentage_60d ?? 0,
-        "200d": coin.market_data?.price_change_percentage_200d ?? 0,
         "1y": coin.market_data?.price_change_percentage_1y ?? 0,
+        "200d": coin.market_data?.price_change_percentage_200d ?? 0,
+        "60d": coin.market_data?.price_change_percentage_60d ?? 0,
+        "30d": coin.market_data?.price_change_percentage_30d ?? 0,
+        "14d": coin.market_data?.price_change_percentage_14d ?? 0,
+        "7d": coin.market_data?.price_change_percentage_7d ?? 0,
+        "24h": coin.market_data?.price_change_percentage_24h ?? 0,
       },
     };
 
