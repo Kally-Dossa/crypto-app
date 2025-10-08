@@ -175,11 +175,20 @@ body {
   .coin-list td {
     font-size: 18px;
   }
+
+  .select-coins-page {
+    font-size: 18px;
+    gap: 5px;
+  }
+
+  #perPage {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 768px) {
   .coin-list {
-    width: 95%;
+    width: 90%;
     padding: 15px;
   }
 
@@ -202,6 +211,15 @@ body {
 
   .pagination {
     gap: 12px;
+  }
+
+  .select-coins-page {
+    font-size: 16px;
+    gap: 4px;
+  }
+
+  #perPage {
+    font-size: 16px;
   }
 }
 
@@ -229,7 +247,16 @@ body {
   }
 
   .icon-btn {
-    padding: 4px;
+    padding: 2px;
+  }
+
+  .select-coins-page {
+    font-size: 13px;
+    gap: 4px;
+  }
+
+  #perPage {
+    font-size: 13px;
   }
 }
 
@@ -261,5 +288,14 @@ body {
 
   .pagination span {
     font-size: 12px;
+  }
+
+  .select-coins-page {
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  #perPage {
+    font-size: 10px;
   }
 }
