@@ -45,7 +45,7 @@ function CoinList() {
             style={{
               display: "flex",
               justifyContent: "center",
-              margin: "70px ",
+              margin: "20px ",
             }}
           >
             <CircularProgress color="inherit" />
