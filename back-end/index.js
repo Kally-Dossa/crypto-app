@@ -36,7 +36,7 @@ app.get("/coins/markets", async (req, res) => {
       price_change_percentage_24h: coin.price_change_percentage_24h,
     }));
 
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
     console.error("Error fetching market data:", error.message);
     res.status(500).json({ error: "Something went wrong" });
@@ -80,7 +80,7 @@ app.get("/coins/:id", async (req, res) => {
       },
     };
 
-    res.json(coinData);
+    res.status(200).json(coinData);
   } catch (error) {
     console.error("Error fetching coin details:", error.message);
     res.status(500).json({ error: "Failed to fetch coin details" });
