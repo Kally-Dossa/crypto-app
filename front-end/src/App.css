@@ -3,4 +3,28 @@
   margin: auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  background-color: transparent;
+  color: #e6edf3;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .App {
+    max-width: 90%;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .App {
+    max-width: 95%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    max-width: 100%;
+    padding: 12px;
+  }
 }

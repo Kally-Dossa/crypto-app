@@ -10,6 +10,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import CircularProgress from "@mui/material/CircularProgress";
 import "../Css/CoinDetail.css";
 
 const API_URL = "http://localhost:3000/coins";
@@ -37,7 +38,14 @@ function CoinDetail() {
     if (id) fetchCoinDetail(id);
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "70px" }}
+      >
+        <CircularProgress color="inherit" />
+      </div>
+    );
   if (!coin) return null;
 
   const priceChange24h = coin.price_changes?.["24h"] ?? 0;
@@ -93,7 +101,11 @@ function CoinDetail() {
           <CartesianGrid strokeDasharray="3 3" stroke="#30363d" />
           <XAxis dataKey="period" stroke="#9ca3af" />
           <YAxis stroke="#9ca3af" />
-          <Tooltip />
+          <Tooltip
+            contentStyle={{
+              color: "#16c784",
+            }}
+          />
           <Line
             type="monotone"
             dataKey="value"

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
+import CircularProgress from "@mui/material/CircularProgress";
 import "../Css/CoinList.css";
 
 const API_URL = "http://localhost:3000/coins/markets";
@@ -39,7 +40,17 @@ function CoinList() {
         Check Crypto Price <ShowChartIcon fontSize="large" />
       </h1>
       <div className="coin-list">
-        {loading && <p>Loading...</p>}
+        {loading && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              margin: "70px ",
+            }}
+          >
+            <CircularProgress color="inherit" />
+          </div>
+        )}
         {!loading && coins.length === 0 && <p>No coins found.</p>}
 
         <table>

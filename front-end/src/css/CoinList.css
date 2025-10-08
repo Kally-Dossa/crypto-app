@@ -77,12 +77,12 @@ body {
 }
 
 .positive {
-  color: #16c784;
+  color: #16c784 !important;
   font-weight: 600;
 }
 
 .negative {
-  color: #ea3943;
+  color: #ea3943 !important;
   font-weight: 600;
 }
 
@@ -123,4 +123,101 @@ body {
   text-align: center;
   color: #9ca3af;
   margin-top: 20px;
+}
+@media (max-width: 1024px) {
+  .coin-list {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .coin-list td {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .coin-list {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .main-container h1 {
+    font-size: 24px;
+  }
+
+  .coin-list table {
+    min-width: 600px;
+  }
+
+  .coin-list td {
+    font-size: 16px;
+    padding: 10px 8px;
+  }
+
+  .coin-name .symbol {
+    font-size: 12px;
+  }
+
+  .pagination {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .coin-list {
+    margin: 40px auto;
+    padding: 12px;
+  }
+
+  .main-container h1 {
+    font-size: 20px;
+  }
+
+  .coin-list table {
+    min-width: 500px;
+  }
+
+  .coin-list td {
+    font-size: 14px;
+    padding: 8px 6px;
+  }
+
+  .pagination span {
+    font-size: 13px;
+  }
+
+  .icon-btn {
+    padding: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .coin-list {
+    margin: 30px auto;
+    padding: 10px;
+  }
+
+  .main-container h1 {
+    font-size: 18px;
+  }
+
+  .coin-list table {
+    min-width: 400px;
+  }
+
+  .coin-list th {
+    font-size: 11px;
+  }
+
+  .coin-list td {
+    font-size: 13px;
+  }
+
+  .pagination {
+    gap: 10px;
+  }
+
+  .pagination span {
+    font-size: 12px;
+  }
 }
