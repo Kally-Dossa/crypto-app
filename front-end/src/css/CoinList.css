@@ -21,6 +21,7 @@ body {
   padding: 25px;
   overflow-x: auto;
   transition: all 0.3s ease;
+  overflow-y: auto;
 }
 
 .coin-list table {
@@ -88,10 +89,8 @@ body {
 
 .pagination {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 18px;
-  margin-top: 25px;
 }
 
 .icon-btn {
@@ -124,6 +123,49 @@ body {
   color: #9ca3af;
   margin-top: 20px;
 }
+
+.select-coins-page {
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  gap: 10px;
+}
+
+#perPage {
+  background-color: #161b22;
+  color: #9ca3af;
+  border: none;
+  font-size: 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.loading-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: none;
+  padding: 100px;
+  border-color: none;
+}
+
+.loading-modal h2 {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
 @media (max-width: 1024px) {
   .coin-list {
     width: 90%;

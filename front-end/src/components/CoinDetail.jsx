@@ -11,40 +11,47 @@ import {
 } from "recharts";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import CircularProgress from "@mui/material/CircularProgress";
+import Modal from "@mui/material/Modal";
 import "../Css/CoinDetail.css";
 
-const API_URL = "http://localhost:3000/coins";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function CoinDetail() {
   const { id } = useParams();
   const [coin, setCoin] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [loadingModalOpen, setLoadingModalOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const fetchCoinDetail = async (id) => {
     setLoading(true);
+    setLoadingModalOpen(true);
     try {
       const res = await fetch(`${API_URL}/${id}`);
       if (!res.ok) throw new Error("Failed to fetch coin details");
       const data = await res.json();
       setCoin(data);
     } catch (e) {
-      alert("Failed to fetch coin details");
+      setError(err.message);
+      console.log("Error fetching data:", err);
     }
     setLoading(false);
+    setLoadingModalOpen(false);
   };
 
   useEffect(() => {
     if (id) fetchCoinDetail(id);
   }, [id]);
 
-  if (loading)
+  if (loadingModalOpen)
     return (
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "70px" }}
-      >
-        <CircularProgress color="inherit" />
-      </div>
+      <Modal open={loadingModalOpen} onClose={() => setLoadingModalOpen(false)}>
+        <div className="loading-modal">
+          <CircularProgress color="inherit" />
+          <h2 id="loading-modal-title">Loading...</h2>
+        </div>
+      </Modal>
     );
   if (!coin) return null;
 
@@ -78,14 +85,14 @@ function CoinDetail() {
 
       <div className="stats">
         <div>
-          <strong>Current Price:</strong> €
+          <strong>Current Price:</strong> $
           {coin.current_price?.toLocaleString() ?? "N/A"}
         </div>
         <div>
-          <strong>24h High:</strong> €{coin.high_24h?.toLocaleString() ?? "N/A"}
+          <strong>24h High:</strong> ${coin.high_24h?.toLocaleString() ?? "N/A"}
         </div>
         <div>
-          <strong>24h Low:</strong> €{coin.low_24h?.toLocaleString() ?? "N/A"}
+          <strong>24h Low:</strong> ${coin.low_24h?.toLocaleString() ?? "N/A"}
         </div>
         <div>
           <strong>Price Change (24h):</strong>{" "}
