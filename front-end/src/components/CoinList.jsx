@@ -70,7 +70,7 @@ function CoinList() {
           <tbody>
             {coins.map((coin, index) => (
               <tr key={coin.id} onClick={() => navigate(`/coin/${coin.id}`)}>
-                <td>{(page - 1) * 10 + index + 1}</td>
+                <td>{(page - 1) * perPage + index + 1}</td>
                 <td className="coin-name">
                   <span className="name">{coin.name}</span>
                   <span className="symbol">{coin.symbol.toUpperCase()}</span>
