@@ -5,7 +5,7 @@ A full-stack application that provides information about cryptocurrency prices. 
 
 ### Environment Variables
 
-#### Backend (`backend/.env`)
+#### Backend (`back-end/.env`)
 
 ```ini
 COINGECKO_API_URL=url_from_demo_plan
