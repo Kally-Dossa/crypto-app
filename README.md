@@ -8,7 +8,7 @@ A full-stack application that provides information about cryptocurrency prices. 
 #### Backend (`back-end/.env`)
 
 ```ini
-COINGECKO_API_URL=url_from_demo_plan
+COINGECKO_API_URL=url_from_the_demo_plan
 PORT=api_port
 COINGECKO_API_KEY=your_api_key
 ```
